@@ -1,9 +1,10 @@
 #include "Persona.hpp"
 #include <string.h>
+
 using namespace std;
 
-Persona::Persona(int id, string nombrePersona, string apellidoPersona ,string correoPersona) {
-    this->id = id;
+Persona::Persona(int Id, string nombrePersona, string apellidoPersona, string correoPersona) {
+    this->Id = Id;
     strcpy(this->nombre, nombrePersona.c_str());
     strcpy(this->apellido, apellidoPersona.c_str());
     strcpy(this->correo, correoPersona.c_str());
@@ -11,14 +12,14 @@ Persona::Persona(int id, string nombrePersona, string apellidoPersona ,string co
 
     
 Persona::Persona() {
-    this->id = 0;    
+    this->Id = 0;    
     strcpy(this->nombre, "");
     strcpy(this->apellido, "");
     strcpy(this->correo, "");
 }
 
-int Persona::getID() {
-    return this->id;
+int Persona::getId() {
+    return this->Id;
 }
 
 string Persona::getNombre() {

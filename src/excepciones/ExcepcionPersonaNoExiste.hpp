@@ -1,13 +1,12 @@
 #ifndef ExcepcionLibroNoExiste_H
 #define ExcepcionLibroNoExiste_H
-
 #include <exception>
 
-class ExcepcionLibroNoExiste : public std::exception
+class ExcepcionPersonaNoExiste : public std::exception
 {
     public:
-    ExcepcionLibroNoExiste() noexcept = default;
-    ~ExcepcionLibroNoExiste() = default;
+    ExcepcionPersonaNoExiste() noexcept = default;
+    ~ExcepcionPersonaNoExiste() = default;
 
     virtual const char* what() const noexcept {
         return "Libro no existe";
