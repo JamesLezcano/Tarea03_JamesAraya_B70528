@@ -23,30 +23,29 @@ void EscritorBinario::AgregarPersona(Persona &persona) {
 }
 
 std::istream& operator >> (std::istream &i, EscritorBinario &escritor){
-    string linea {""},       nombre{""},       apellido{""},      correo{""};// ------------------------------------------Variables para los datos del txt
+    string linea {""},       nombre{""},       apellido{""},      correo{""};// -------------------------------> Variables para los datos del txt
     int Id {0};
-    EscritorBinario archivoSalida {"Binario.dat"};//-----------------------------------------------------------------------Creamos el Archivo Binario
+    EscritorBinario archivoSalida {"Binario.dat"};//-----------------------------------------------------------> Creamos el Archivo Binario
     
-    while (getline(i, linea)) {//---------------------------------------------------------------------------------- Leer línea por línea el txt
+    while (getline(i, linea)) {//------------------------------------------------------------------------------> Leer línea por línea el txt
         try{
-            istringstream stream(linea);// ----------------------------------------------------------------------------Procesamos la línea
-            Id=0;        nombre,     apellido,     correo    = ""; // ------------------------------------------------------Limpiamos las variables de los datos a extraer
-
-            stream >> Id >> nombre >> apellido >> correo; // ---------------------------------------------------------------Extraemos los datos del txt
+            istringstream stream(linea);// --------------------------------------------------------------------> Procesamos la línea
+            Id=0;        nombre,     apellido,     correo    = ""; // -----------------------------------------> Limpiamos las variables de los datos a extraer
+            stream >> Id >> nombre >> apellido >> correo; // --------------------------------------------------> Extraemos los datos del txt
            
-            if (nombre.length() == 0  || apellido.length() == 0 || correo.length() == 0 || Id==0){// -----------------------Revisar si línea es válida
+            if (nombre.length() == 0  || apellido.length() == 0 || correo.length() == 0 || Id==0){// ----------> Revisar si línea es válida
                 throw ExcepcionErrorEnTXT();
             }
-            Persona * PersonaNueva = new Persona {Id,nombre,apellido,correo}; //--------------------------------------------Creamos un puntero a los datos
+            Persona * PersonaNueva = new Persona {Id,nombre,apellido,correo}; //-------------------------------> Creamos un puntero a los datos
          
-            archivoSalida.AgregarPersona(*PersonaNueva); // ----------------------------------------------------------------Enviamos los datos al Archivo Binario
+            archivoSalida.AgregarPersona(*PersonaNueva); // ---------------------------------------------------> Enviamos los datos al Archivo Binario
             delete PersonaNueva;
         }
         catch (string &excepcion){
             cerr << excepcion << endl;
         }
     }
-    archivoSalida.Cerrar(); //------------------------------------------------------------------------------------- Cerramos el archivo Binario
+    archivoSalida.Cerrar(); //---------------------------------------------------------------------------------> Cerramos el archivo Binario
     return i;
 }
 

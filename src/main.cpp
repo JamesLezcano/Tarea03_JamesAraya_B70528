@@ -31,8 +31,8 @@ int main(){
         int ID=13;
         Persona persona = archivoEntrada.ObtenerPersona(ID, primero);//------------------------------> Indica la persona que se decea buscar iniciando con la persona 1
 
-        cout<<persona.getId()<<" "<<persona.getNombre()<<"  "<<persona.getApellido() //--------------> Imprime los datos de la persona seleccionada
-                             <<"  "<<persona.getCorreo() <<endl;
+        cout<<persona.getId()<<" "<<persona.getNombre()<<" "<<persona.getApellido() //--------------> Imprime los datos de la persona seleccionada
+                             <<" "<<persona.getCorreo() <<endl;
         archivoEntrada.Cerrar();  //-----------------------------------------------------------------> Cierra el archivo binario para poder ser utilizado despues    
     }catch(const ExcepcionPersonaNoExiste & e){//----------------------------------------------------> Excepcion si no existe una persona
         std::cerr << "Error no existe esa persona. " << e.what() << '\n';

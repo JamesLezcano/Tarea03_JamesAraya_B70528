@@ -13,11 +13,11 @@ class LectorBinario {
     ifstream archivoEntrada;
 
     public:
-    LectorBinario(string nombreArchivo);//------------> Recibe el nombre del archivo binario por leer
+    LectorBinario(string nombreArchivo);//--------------> Recibe el nombre del archivo binario por leer
 
     Persona ObtenerPersona(int Id,int inicial);//-------> Recibe el Id de la persona por revisar y el id inicial para saber donde iniciar la busqueda
     
-    void Cerrar();//----------------------------------> Cierra el archivo binario
+    void Cerrar();//------------------------------------> Cierra el archivo binario
 };
 
 #endif
