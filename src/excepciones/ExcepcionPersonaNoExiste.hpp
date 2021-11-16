@@ -7,11 +7,9 @@ class ExcepcionPersonaNoExiste : public std::exception
     public:
     ExcepcionPersonaNoExiste() noexcept = default;
     ~ExcepcionPersonaNoExiste() = default;
-
     virtual const char* what() const noexcept {
-        return "Libro no existe";
+        return "Persona no existe";
     }
-
 };
 
 #endif

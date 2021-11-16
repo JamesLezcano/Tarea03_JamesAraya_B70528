@@ -16,7 +16,7 @@
                 "-g",
                 "${workspaceFolder}/src/*.cpp",
                 "-o",
-                "${workspaceFolder}/obj/clase03.exe"
+                "${workspaceFolder}/obj/Tarea03.exe"
             ],
             "options": {
                 "cwd": "C:/msys64/mingw64/bin"

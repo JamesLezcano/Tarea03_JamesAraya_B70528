@@ -1,3 +1,5 @@
+#ifndef UNIT_TEST
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -9,49 +11,33 @@
 using namespace std;
 
 int main(){
-
-    ifstream ifs("personas.txt", ifstream::in);//----------------------------------------------------------------Abre el Txt Indicado
-    if (!ifs.is_open()) {//-------------------------------------------------------------------------------------------------Verifica que el txt este abierto
+    
+    ifstream ifs("personas.txt", ifstream::in);//-----------------------------------------------------> Abre el Txt Indicado
+    if (!ifs.is_open()) {//---------------------------------------------------------------------------> Verifica que el txt este abierto
         std::cerr << "Error leyendo archivo personas.txt" << std::endl;
-        //return -1;
-    }
-
-    string linea {""},       nombre{""},       apellido{""},      correo{""};// ------------------------------------------Variables para los datos del txt
-    int Id {0};
-
-    EscritorBinario archivoSalida {"Binario.dat"};//-----------------------------------------------------------------------Creamos el Archivo Binario
-    while (std::getline(ifs, linea)) {//---------------------------------------------------------------------------------- Leer línea por línea el txt
-        try{
-            std::istringstream stream(linea);// ----------------------------------------------------------------------------Procesamos la línea
-            Id=0;        nombre,     apellido,     correo    = ""; // ------------------------------------------------------Limpiamos las variables de los datos a extraer
-
-            stream >> Id >> nombre >> apellido >> correo; // ---------------------------------------------------------------Extraemos los datos del txt
-           
-            if (nombre.length() == 0  || apellido.length() == 0 || correo.length() == 0 || Id==0){// -----------------------Revisar si línea es válida
-                string error = "Error en línea \"" + linea + "\". Nombre no puede ser vacío.";
-                throw error;
-            }
-            Persona * PersonaNueva = new Persona {Id,nombre,apellido,correo}; //--------------------------------------------Creamos un puntero a los datos
-           // cout<<PersonaNueva <<"   "<< &PersonaNueva<<endl; 
-            archivoSalida.AgregarPersona(*PersonaNueva); // ----------------------------------------------------------------Enviamos los datos al Archivo Binario
-            delete PersonaNueva;
-        }
-        catch (string &excepcion){
-            cerr << excepcion << endl;
-        }
-    }
-    archivoSalida.Cerrar(); //------------------------------------------------------------------------------------- Cerramos el archivo Binario
-    ifs.close();//----------------------------------------------------------------------------------------------------------Cierra el txt leido
-
-    try{
-        LectorBinario archivoEntrada {"Binario.dat"};
-        Persona persona = archivoEntrada.ObtenerLibro(3);
-        cout<<persona.getId();
-        archivoEntrada.Cerrar();        
-    }catch(const ExcepcionPersonaNoExiste & e){
-        std::cerr << "Error leyendo el libro solicitado. " << e.what() << '\n';
         return -1;
     }
+    
+    EscritorBinario * Datos=new EscritorBinario();//-------------------------------------------------> Crea un puntero al archivo de texto
+    ifs>> *Datos;//----------------------------------------------------------------------------------> Envia los Datos del txt al escritor de texto
+    ifs.close();//-----------------------------------------------------------------------------------> Cierra el txt leido
 
+    try{
+        LectorBinario archivoEntrada {"Binario.dat"};//----------------------------------------------> Abre el archivo binario
+        Persona id_inicial = archivoEntrada.ObtenerPersona(0 , 0);//---------------------------------> Permite buscar el id del primer elemento.
+        int primero=id_inicial.getId();//------------------------------------------------------------> Almacena el primer id en un int 
+
+        ///////// AQUÍ SE INGRESA EL ID DE LA PERSONA A BUSCAR  //////////////////
+        int ID=13;
+        Persona persona = archivoEntrada.ObtenerPersona(ID, primero);//------------------------------> Indica la persona que se decea buscar iniciando con la persona 1
+
+        cout<<persona.getId()<<" "<<persona.getNombre()<<"  "<<persona.getApellido() //--------------> Imprime los datos de la persona seleccionada
+                             <<"  "<<persona.getCorreo() <<endl;
+        archivoEntrada.Cerrar();  //-----------------------------------------------------------------> Cierra el archivo binario para poder ser utilizado despues    
+    }catch(const ExcepcionPersonaNoExiste & e){//----------------------------------------------------> Excepcion si no existe una persona
+        std::cerr << "Error no existe esa persona. " << e.what() << '\n';
+        return -1;
+    }
     return 0;
 }
+#endif

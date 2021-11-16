@@ -8,12 +8,12 @@ LectorBinario::LectorBinario(string nombreArchivo) {
 
     archivoEntrada.open(nombreArchivo, ios::in|ios::binary);//-----------------> Abre el achivo binario
     if (!archivoEntrada.is_open()){//------------------------------------------> Evita que el programa continue si no se logro abrir el archivo
-        throw new ExcepcionArchivoNoAbre();
+        throw ExcepcionArchivoNoAbre();
     }
 }
 
-Persona LectorBinario::ObtenerLibro(int Id) {
-    Id=Id-1;  //---------------------------------------------------------------> Permite que se obtenga la persona que se indica en el orden de los Z+
+Persona LectorBinario::ObtenerPersona(int Id, int inicial) {
+    Id=Id-inicial;  //---------------------------------------------------------------> Permite que se obtenga la persona que se indica iniciando con el Id seleccionado
     Persona PersonaLeida; //---------------------------------------------------> Permite acceder a los datos de las personas
     long posicionLibro = sizeof(Persona) * (Id); //----------------------------> Posición del libro número idLibro
     archivoEntrada.seekg(0, ios::end); //--------------------------------------> Permite

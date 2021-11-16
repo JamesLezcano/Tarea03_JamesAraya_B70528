@@ -26,8 +26,8 @@
     ],
     "gtest-adapter.supportLocation": true,
     "files.associations": {
-        "deque": "cpp",
-        "string": "cpp",
-        "vector": "cpp"
+        "*.tcc": "cpp",
+        "fstream": "cpp",
+        "iosfwd": "cpp"
     }
 }

@@ -12,11 +12,11 @@ class Persona{
 
     public:
     Persona();
-    Persona(int id, string nombre, string apellido, string correo);
-    int getId();
-    string getNombre();
-    string getApellido();
-    string getCorreo();
+    Persona(int id, string nombre, string apellido, string correo);//----> Pasa los datos en formato de char y hace una copia en formato string
+    int getId();//-------------------------------------------------------> Almacena el Id de la persona
+    string getNombre();//------------------------------------------------> Almacena el nombre de la persona
+    string getApellido();//----------------------------------------------> Almacena el apellido de la persona
+    string getCorreo();//------------------------------------------------> Almacena los datos del Correo
 };
 
 
