@@ -22,9 +22,7 @@ namespace {
 
         //Lee el documento binario que se escribio
         LectorBinario lector {"Binario.dat"};
-        Persona id_inicial = lector.ObtenerPersona(0 , 0);
-        int primero=id_inicial.getId();
-        Persona personaEncontrada = lector.ObtenerPersona(5,primero);
+        Persona personaEncontrada = lector.ObtenerPersona(0);
         lector.Cerrar();
 
         //Copia la linea de stream y optiene cada dato de la misma 
@@ -52,9 +50,7 @@ namespace {
 
         // Leer el documento binario y busca la persona con el ID de 10 si esta extrae la informacion
         LectorBinario lector {"prueba.dat"};
-        Persona id_inicial = lector.ObtenerPersona(0 , 0);
-        int primero=id_inicial.getId();
-        Persona personaEncontrada = lector.ObtenerPersona(10,primero);
+        Persona personaEncontrada = lector.ObtenerPersona(1);
         lector.Cerrar();
 
         //Compara los datos extraidos del documento binario con los enviados como prueba 
@@ -89,7 +85,7 @@ namespace {
 
             // Leer el id de la persona de prueba
             LectorBinario lector{"prueba.dat"};
-            lector.ObtenerPersona(23,0);
+            lector.ObtenerPersona(23);
             lector.Cerrar();
 
         }, ExcepcionPersonaNoExiste);
@@ -107,7 +103,7 @@ namespace {
 
             // Leer un archivo que no existe para llamar la exepcion
             LectorBinario lector{"prueba2.dat"};
-            lector.ObtenerPersona(23,0);
+            lector.ObtenerPersona(23);
             lector.Cerrar();
 
         },ExcepcionArchivoNoAbre );

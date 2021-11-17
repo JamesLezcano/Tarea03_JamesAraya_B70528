@@ -12,8 +12,8 @@ LectorBinario::LectorBinario(string nombreArchivo) {
     }
 }
 
-Persona LectorBinario::ObtenerPersona(int Id, int inicial) {
-    Id=Id-inicial;  //---------------------------------------------------------> Permite que se obtenga la persona que se indica iniciando con el Id seleccionado
+Persona LectorBinario::ObtenerPersona(int Id) {
+    
     Persona PersonaLeida; //---------------------------------------------------> Permite acceder a los datos de las personas
     long posicionLibro = sizeof(Persona) * (Id); //----------------------------> Posición del libro número idLibro
     archivoEntrada.seekg(0, ios::end); //--------------------------------------> Permite

@@ -15,7 +15,7 @@ class LectorBinario {
     public:
     LectorBinario(string nombreArchivo);//--------------> Recibe el nombre del archivo binario por leer
 
-    Persona ObtenerPersona(int Id,int inicial);//-------> Recibe el Id de la persona por revisar y el id inicial para saber donde iniciar la busqueda
+    Persona ObtenerPersona(int Id);//-------> Recibe el Id de la persona por revisar y el id inicial para saber donde iniciar la busqueda
     
     void Cerrar();//------------------------------------> Cierra el archivo binario
 };
